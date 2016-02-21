@@ -14,7 +14,7 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = Employee.FIND_ALL, query = "select e from Employee e order by e.name asc"),
+    @NamedQuery(name = Employee.FIND_ALL, query = "select e from Employee e order by e.lastName asc"),
     @NamedQuery(name = Employee.FIND_BY_USERNAME, query = "select e from Employee e where e.username=:username")
 })
 public class Employee implements Serializable {
