@@ -15,12 +15,14 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = Employee.FIND_ALL, query = "select e from Employee e order by e.lastName asc"),
-    @NamedQuery(name = Employee.FIND_BY_USERNAME, query = "select e from Employee e where e.username=:username")
+    @NamedQuery(name = Employee.FIND_BY_USERNAME, query = "select e from Employee e where e.username=:username"),
+    @NamedQuery(name = Employee.FIND_BY_USERNAME_PASSWORD, query = "select e from Employee e where e.username=:username AND e.password=:password")
 })
 public class Employee implements Serializable {
 
     public static final String FIND_ALL = "Employee.findAll";
     public static final String FIND_BY_USERNAME = "Employee.findByUsername";
+    public static final String FIND_BY_USERNAME_PASSWORD = "Employee.findByUsernamePassword";
 
     
     private static final long serialVersionUID = 1L;
@@ -44,8 +46,10 @@ public class Employee implements Serializable {
     {
     }
 
-    public Employee(String name, String username, String password, String position, int personNumber, Division division) {
-        this.lastName = name;
+    public Employee(String title, String firstname, String lastname, String username, String password, String position, int personNumber, Division division) {
+        this.title = title;
+        this.firstName = firstname;        
+        this.lastName = lastname;
         this.username = username;
         this.password = password;
         this.position = position;

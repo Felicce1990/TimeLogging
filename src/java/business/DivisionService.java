@@ -43,7 +43,7 @@ public class DivisionService {
     {
         return em.find(Division.class, id);
     }
-    
+        
     public Division findByName(String name) throws NoSuchDivisionException {
         List<Division> resultList = em.createNamedQuery(Division.FIND_BY_NAME, Division.class)
                 .setParameter("name", name)

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>WERTGRUND Zeiterfassung</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="css/position.css"  />
+    </head>
+    <body>
+        <ui:composition template="templateSheet.xhtml">
+            <ui:define name="left">
+
+            </ui:define>
+            <ui:define name="content">
+                <br></br>
+                <h:panelGrid styleClass="centered">
+                    <p:row>
+                        <p:column>
+                            <h:outputLabel for="name" value="Name:" styleClass="rightSpace"/>
+                            <p:inputText id="name" value="#{employeeController.fullName}" readonly="true" label="username" styleClass="rightSpace"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputLabel for="position" value="Abteilung:" styleClass="rightSpace"/>
+                            <p:inputText id="position" value="#{employeeController.division.name}" readonly="true" label="username" styleClass="rightSpace"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputLabel for="personNumber" value="Pers. Nr.:" styleClass="rightSpace"/>
+                            <p:inputText id="personNumber" value="#{employeeController.personNumber}" readonly="true" label="username" styleClass="rightSpace"/>
+                        </p:column>
+                    </p:row>
+
+
+
+
+                </h:panelGrid>
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>

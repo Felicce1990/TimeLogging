@@ -3,3 +3,11 @@
 .centered {
     margin: 0px auto;
 }
+
+.topSpace {
+    margin-top: 5px;
+}
+
+.rightSpace {
+    margin-right: 5px;
+}

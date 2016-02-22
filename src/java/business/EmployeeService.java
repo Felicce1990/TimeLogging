@@ -39,9 +39,23 @@ public class EmployeeService
         return em.find(Employee.class, id);
     }
     
+    public Employee findByUserNamePassword(String username, String password) throws NoSuchEmployeeException {
+        List<Employee> resultList = em.createNamedQuery(Employee.FIND_BY_USERNAME_PASSWORD, Employee.class)
+                .setParameter("username", username)
+                .setParameter("password", password)
+                .getResultList();
+        if (resultList != null && resultList.size() > 1) {
+            throw new IllegalStateException("Employee named " + username + " was found more than once.");
+        }
+        if (resultList != null && resultList.size() == 1) {
+            return resultList.get(0);
+        }
+        return null;    
+    }
+    
     public Employee findByUserName(String name) throws NoSuchEmployeeException {
         List<Employee> resultList = em.createNamedQuery(Employee.FIND_BY_USERNAME, Employee.class)
-                .setParameter("name", name)
+                .setParameter("username", name)
                 .getResultList();
         if (resultList != null && resultList.size() > 1) {
             throw new IllegalStateException("Employee named " + name + " was found more than once.");

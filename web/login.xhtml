@@ -6,18 +6,39 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <title>WERTGRUND Zeiterfassung</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="css/position.css"  />
     </head>
     <body>
-        <ui:composition template="template.xhtml">
+        <ui:composition template="templateSheet.xhtml">
             <ui:define name="left">
-                
+
             </ui:define>
             <ui:define name="content">
-                Test
+                <br></br>
+                <h:panelGrid styleClass="centered">
+                    <h:form>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Benutzername: " />
+                        <p:inputText id="username" value="#{employeeController.username}" required="true" label="username" />
+                        
+                        <h:outputLabel for="password" value="Passwort:" styleClass="topSpace"/>
+                        <p:password id="password" value="#{employeeController.password}" required="true" label="password" styleClass="topSpace"/>
+                        <br></br><br></br><br></br><br></br>
+                        <p:commandButton value="Anmelden" action="#{employeeController.login()}"/>
+                        
+                    </h:panelGrid>
+                    </h:form>
+                </h:panelGrid>
+                <h:form>
+                    <p:commandButton value="Testuser anlegen" actionListener="#{employeeController.addTestUser()}"/>
+                </h:form>
             </ui:define>
 
         </ui:composition>
